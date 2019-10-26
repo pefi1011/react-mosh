@@ -20,8 +20,8 @@ class Counters extends Component {
             value={counter.value}
             selected={true} // its the same as just putting selected
           >
+            {/** THIS VALUE IS PASSED AS CHILDREN PROPERTY OF PROPS OBJECT */}
             <h4>Counter #{counter.id}</h4>
-            {/** THIS VALUE IS PASSED AS CHILDERN PROPERTY OF PROPS OBJECT */}
           </Counter>
         ))}
       </div>
