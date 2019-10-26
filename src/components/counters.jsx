@@ -18,7 +18,7 @@ class Counters extends Component {
           <Counter
             key={counter.id}
             value={counter.value}
-            selected={true}
+            selected={true} // its the same as just putting selected
           ></Counter>
         ))}
       </div>
