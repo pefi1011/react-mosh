@@ -2,39 +2,54 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    imageUrl: "https://picsum.photos/200"
+    count: 1,
+    tags: ["tag1", "tag2", "tag3"]
   };
+
+  handleIncrement = product => {
+    console.log(product);
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          // Instead of writing a wrapper function (doHandleIncrement)
+          // we can use an inline function
+          // i.e. we pass the arrow function (the previous wrapper function (doHandleIncrement) )
+          // We are still passing the function reference. The reference is though to the arrow function which we use as the wrapper
+
+          // When rendering a list of products in a shopping cart,
+          // in our map method, we have access to a product object
+          // so you can the product which is being currently rendered as tha argument
+          onClick={() => this.handleIncrement()}
+          // IN A NUTSHELL
+          // whenever you need to pass an argument to your event handler,
+          // simply wrapper the event handler with an arrow function
+          // and in the body of the arrow function call the event handler and pass the argument
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
+      </React.Fragment>
+    );
+  }
 
   formatCount() {
     // Object destructuring
     const { count } = this.state;
-
-    // JSX expressions are like a normal JS objects
-    // you can pass them to function
-    // you can return them from a function
-    // you can use them as a value for a variable
     const emptyCount = <h1>Zero</h1>;
 
     return count === 0 ? emptyCount : count;
   }
 
-  render() {
-    return (
-      <React.Fragment>
-        <img src={this.state.imageUrl} alt="" />
-        <span
-          style={{ fontSize: "100px", fontWeight: "bold" }}
-          className="badge badge-primary m-2"
-        >
-          {this.formatCount()}
-        </span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-      </React.Fragment>
-    );
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
   }
 }
 
 export default Counter;
-
-// ToDo 5 Embedding Expressions
