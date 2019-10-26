@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import Counter from "./counter";
 
+// PROPS: data which is given to the component -> INPUT TO THE COMPONENT
+//    -> Props is read-only: we cannot change the input of the component within a component
+// STATE: data which is local/private to a component
+//    -> Other components cannot access that state! It's completely internal to that component
+//
+//
+//
+//
 class Counters extends Component {
   state = {
     counters: [
