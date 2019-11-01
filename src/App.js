@@ -49,7 +49,12 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar />
+        {/*   <NavBar totalCounters={this.state.counters.length} />*/}
+        {/*  Filters the counters where the counter value is greater than zero */}
+        {/*  and then gives back the length of that filtered array  */}
+        <NavBar
+          totalCounters={this.state.counters.filter(c => c.value > 0).length}
+        />
         <main className="container">
           <Counters
             // these are the 3 events raised by this component and their handlers
