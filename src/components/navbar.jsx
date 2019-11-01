@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 // Using Object Destructuring method
 // to destruct the props argument
