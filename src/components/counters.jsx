@@ -19,6 +19,20 @@ class Counters extends Component {
     ]
   };
 
+  handleIncrement = counter => {
+    console.log("counter: ", counter);
+    // Like before we do not update the state directly
+    // we crate a new counters array and give it to the setState method
+    // and let React deal with updating the state
+
+    // using the spread operator to clone the array
+    const counters = [...this.state.counters];
+    // cloning the argument, i.e. the counter object and assigning its value to an object within array
+    counters[0] = { ...counter };
+    counters[0].value++;
+    console.log(this.state.counters[0]);
+  };
+
   handleDelete = counterId => {
     // get a new array without the counter with the given id
     const counters = this.state.counters.filter(
@@ -58,15 +72,11 @@ class Counters extends Component {
         {this.state.counters.map(counter => (
           <Counter
             onDelete={this.handleDelete} // PASSING THE REFERENCE (TO THE METHOD) TO THE CHILD COMPONENT VIA PROPS
+            onIncrement={this.handleIncrement}
             key={counter.id}
-            // instead of passing value and id
-            // value={counter.value}
-            // id={counter.id}
-            // we can pass the whole counter object
             counter={counter}
-            selected={true} // its the same as just putting selected
+            selected={true}
           >
-            {/** THIS VALUE IS PASSED AS CHILDREN PROPERTY OF PROPS OBJECT */}
             <h4>Counter #{counter.id}</h4>
           </Counter>
         ))}
