@@ -52,10 +52,13 @@ class Counters extends Component {
       <div>
         {this.state.counters.map(counter => (
           <Counter
-            id={counter.id}
             onDelete={this.handleDelete} // PASSING THE REFERENCE (TO THE METHOD) TO THE CHILD COMPONENT VIA PROPS
             key={counter.id}
-            value={counter.value}
+            // instead of passing value and id
+            // value={counter.value}
+            // id={counter.id}
+            // we can pass the whole counter object
+            counter={counter}
             selected={true} // its the same as just putting selected
           >
             {/** THIS VALUE IS PASSED AS CHILDREN PROPERTY OF PROPS OBJECT */}

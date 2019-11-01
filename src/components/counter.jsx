@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    value: this.props.value,
+    value: this.props.counter.value,
     tags: ["tag1", "tag2", "tag3"]
   };
 
@@ -35,7 +35,7 @@ class Counter extends Component {
           //  onClick={this.props.onDelete}
           // this.props.id is the id of the counter -> that's the argument which we are passing
           // to the parent component (Counters)
-          onClick={() => this.props.onDelete(this.props.id)}
+          onClick={() => this.props.onDelete(this.props.counter.id)}
           className="btn btn-danger btn-sm m-2"
         >
           Delete
