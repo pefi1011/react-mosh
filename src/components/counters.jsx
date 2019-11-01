@@ -27,10 +27,13 @@ class Counters extends Component {
 
     // using the spread operator to clone the array
     const counters = [...this.state.counters];
-    // cloning the argument, i.e. the counter object and assigning its value to an object within array
-    counters[0] = { ...counter };
-    counters[0].value++;
-    console.log(this.state.counters[0]);
+    const index = counters.indexOf(counter); // getting the index by object itself
+    counters[index] = { ...counter };
+    counters[index].value++;
+
+    console.log("counter incremented: ", this.state.counters[index]);
+
+    this.setState({ counters });
   };
 
   handleDelete = counterId => {
