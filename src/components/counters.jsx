@@ -19,11 +19,17 @@ class Counters extends Component {
     ]
   };
 
+  // WE WANT TO PASS THE REFERENCE TO THIS FUNCTION USING PROPS TO OUR CHILD COMPONENT, i.e. COUNTER
+  handleDelete = () => {
+    console.log("Event Handler Called");
+  };
+
   render() {
     return (
       <div>
         {this.state.counters.map(counter => (
           <Counter
+            onDelete={this.handleDelete} // PASSING THE REFERENCE (TO THE METHOD) TO THE CHILD COMPONENT VIA PROPS
             key={counter.id}
             value={counter.value}
             selected={true} // its the same as just putting selected

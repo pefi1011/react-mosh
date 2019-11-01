@@ -29,6 +29,12 @@ class Counter extends Component {
         >
           Increment
         </button>
+        <button
+          onClick={this.props.onDelete} // onClick event should be handled by the "onDelete" attribute of the props. The attribute "onDelete" should hold a reference to a handler method at the parent
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
+        </button>
       </div>
     );
   }
