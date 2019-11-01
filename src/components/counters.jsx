@@ -41,6 +41,9 @@ class Counters extends Component {
     this.setState({ counters });
 
     // NOTHING HAPPENS BECAUSE WE DO NO HAVE THE SINGLE SOURCE OF TRUTH!!!
+    // Each of our components (4 instances of Counter) have their own local state
+    // Our counters component (array of counter) and each counter component has a value
+    // This value is currently disconnected from the value property of each counter object which we have in the array
   };
 
   render() {
