@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 
-// We define a constant and set it to an arrow function
-const NavBar = () => {
-  // in the body of this function, we return a react element
-  // Instead of having a class that extends Compnent Class with a render method
-  // we define a function that returns a react component
-
-  // nothing wrong with using Class to define a component, but some devs prefer to use
-  // functions when they are dealing with simple stateless components
-
+// Add props as parameter
+const NavBar = props => {
   return (
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="#">
         Navbar{" "}
         <span className="badge badge-pill badge-secondary">
-          {this.props.totalCounters}
+          {/* this.props.totalCounters}{" "}
+          {/** 1. This works only in class component. In functional component we have to define props as param */}
+          {props.totalCounters}{" "}
+          {/** remove "this" because props is now the argument of the function */}
         </span>
       </a>
     </nav>
