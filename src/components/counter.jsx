@@ -30,7 +30,12 @@ class Counter extends Component {
           Increment
         </button>
         <button
-          onClick={this.props.onDelete} // onClick event should be handled by the "onDelete" attribute of the props. The attribute "onDelete" should hold a reference to a handler method at the parent
+          // onClick event should be handled by the "onDelete" attribute of the props. The attribute "onDelete" should hold a reference to a handler method at the parent
+          // WE WANT TO PASS AN ARGUMENT TO THE this.props.onDelete, so we wrap it in a arrow function
+          //  onClick={this.props.onDelete}
+          // this.props.id is the id of the counter -> that's the argument which we are passing
+          // to the parent component (Counters)
+          onClick={() => this.props.onDelete(this.props.id)}
           className="btn btn-danger btn-sm m-2"
         >
           Delete

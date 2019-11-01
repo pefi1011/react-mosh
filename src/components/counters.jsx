@@ -20,8 +20,31 @@ class Counters extends Component {
   };
 
   // WE WANT TO PASS THE REFERENCE TO THIS FUNCTION USING PROPS TO OUR CHILD COMPONENT, i.e. COUNTER
-  handleDelete = () => {
-    console.log("Event Handler Called");
+  handleDelete = counterId => {
+    // In React we do not update the state directly,
+    // i.e. we are not going to delete a counter from the array
+    // Instead, we are going to create a new array without the given counter
+    // and then call the setState() method of the component and let React update the state
+
+    // use the filter method to get all the counters, except the one with the given id
+    const newCounters = this.state.counters.filter(
+      counter => counter.id !== counterId
+    );
+
+    // We override the counters property with the new array
+    this.setState({ counters: newCounters });
+
+    /* 
+    // APPROACH B
+    const counters = this.state.counters.filter(
+      counter => counter.id !== counterId
+    );
+    // When the property and the new value have the same name
+    // i.e. in this example counters
+    // we can write instead of {counters: counters}
+    // only {counters}
+    this.setState({ counters });
+    */
   };
 
   render() {
@@ -29,6 +52,7 @@ class Counters extends Component {
       <div>
         {this.state.counters.map(counter => (
           <Counter
+            id={counter.id}
             onDelete={this.handleDelete} // PASSING THE REFERENCE (TO THE METHOD) TO THE CHILD COMPONENT VIA PROPS
             key={counter.id}
             value={counter.value}
