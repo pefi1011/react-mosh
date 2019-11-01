@@ -19,37 +19,39 @@ class Counters extends Component {
     ]
   };
 
-  // WE WANT TO PASS THE REFERENCE TO THIS FUNCTION USING PROPS TO OUR CHILD COMPONENT, i.e. COUNTER
   handleDelete = counterId => {
-    // In React we do not update the state directly,
-    // i.e. we are not going to delete a counter from the array
-    // Instead, we are going to create a new array without the given counter
-    // and then call the setState() method of the component and let React update the state
-
-    // use the filter method to get all the counters, except the one with the given id
-    const newCounters = this.state.counters.filter(
-      counter => counter.id !== counterId
-    );
-
-    // We override the counters property with the new array
-    this.setState({ counters: newCounters });
-
-    /* 
-    // APPROACH B
+    // get a new array without the counter with the given id
     const counters = this.state.counters.filter(
       counter => counter.id !== counterId
     );
-    // When the property and the new value have the same name
-    // i.e. in this example counters
-    // we can write instead of {counters: counters}
-    // only {counters}
+
     this.setState({ counters });
-    */
+  };
+
+  handleReset = () => {
+    console.log("Handle reset");
+
+    // make a new array out of the counters array
+    // set the value of counter to 0 and add it to the "mapped" array
+    const counters = this.state.counters.map(counter => {
+      counter.value = 0;
+      return counter;
+    });
+
+    this.setState({ counters });
+
+    // NOTHING HAPPENS BECAUSE WE DO NO HAVE THE SINGLE SOURCE OF TRUTH!!!
   };
 
   render() {
     return (
       <div>
+        <button
+          onClick={this.handleReset}
+          className="btn btn-primary btn-sm m-2"
+        >
+          Reset
+        </button>
         {this.state.counters.map(counter => (
           <Counter
             onDelete={this.handleDelete} // PASSING THE REFERENCE (TO THE METHOD) TO THE CHILD COMPONENT VIA PROPS
