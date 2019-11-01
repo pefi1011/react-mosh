@@ -1,28 +1,28 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = {
-    // THIS CODE IS EXECUTED EXACTLY ONCE
-    // WHEN THE INSTANCE OF THE COMPONENT IS CREATED
-    // SO WHEN THE PAGE LOAD, WE SEE THE VALUE
-    // BUT WHEN WE CLICK ON THE RESET BUTTON
-    // THIS STATE HERE IS NOT UPDATED
-    value: this.props.counter.value,
-    tags: ["tag1", "tag2", "tag3"]
-  };
+  // WE MODIFY THE COUNTER COMPONENT TO "CONTROLLED COMPONENT"
+  // A controlled component does not have own state
+  // It gets all the data from the parent via props
+  // and it raises events whenever the data has to be changed
 
-  handleIncrement = product => {
+  // WE DELETED THE handleIncrement method because
+  // this method was modifying the state
+  // because we turned the Counter into a controlled component
+  // modifying state should be done from the parent
+  // whenever the controlled component sends an event
+  /*handleIncrement = product => {
     console.log(product);
     this.setState({ value: this.state.value + 1 });
   };
-
+*/
   render() {
     return (
       <div>
         {this.props.children}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={() => this.handleIncrement()}
+          onClick={() => this.props.onIncrement(this.props.counter)}
           className="btn btn-secondary btn-sm"
         >
           Increment
@@ -39,7 +39,7 @@ class Counter extends Component {
 
   formatCount() {
     // Object destructuring
-    const { value } = this.state;
+    const { value } = this.props.counter;
     const emptyCount = <p>Zero</p>;
 
     return value === 0 ? emptyCount : value;
@@ -47,7 +47,7 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 }
