@@ -39,6 +39,7 @@ class Counter extends Component {
       // DECIDE WHETHER  WE SHOULD AN AJAX CALL TO GET NEW DATA
       // BASED ON THE CHANGES IN THE PROPS AND STATE OBJECTS
     }
+    console.log("Counter - Update");
   }
 
   render() {
