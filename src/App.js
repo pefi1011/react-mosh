@@ -65,6 +65,22 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleDecrement = counter => {
+    console.log("counter: ", counter);
+
+    // using the spread operator to clone the array
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter); // getting the index by object itself
+    counters[index] = { ...counter }; // using the spread operator to clone the argument, i.e. the counter object
+    counters[index].value = counters[index].value - 1;
+
+    if (counters[index].value < 0) counters[index].value = 0;
+
+    console.log("counter decremented: ", this.state.counters[index]);
+
+    this.setState({ counters });
+  };
+
   handleDelete = counterId => {
     // get a new array without the counter with the given id
     const counters = this.state.counters.filter(
@@ -90,9 +106,6 @@ class App extends Component {
     console.log("App - Rendered");
     return (
       <React.Fragment>
-        {/*   <NavBar totalCounters={this.state.counters.length} />*/}
-        {/*  Filters the counters where the counter value is greater than zero */}
-        {/*  and then gives back the length of that filtered array  */}
         <NavBar
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
@@ -101,6 +114,7 @@ class App extends Component {
             // these are the 3 events raised by this component and their handlers
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
             onDelete={this.handleDelete}
             counters={this.state.counters}
             // The counter component is now a controlled component
