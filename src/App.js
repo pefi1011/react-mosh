@@ -47,6 +47,8 @@ class App extends Component {
     // Ajax Call
     // and then set state the state with that data
     console.log("App - Mounted");
+
+    // WHEN A COMPONENT IS MOUNTED, THAT MEANS THAT THE COMPONENT IS IN THE DOM
   }
 
   handleIncrement = counter => {
@@ -83,6 +85,9 @@ class App extends Component {
   };
 
   render() {
+    // The render method returns a react element which represents an element in our virtual DOM
+    // When a component is rendered, all its children are rendered recursively
+    console.log("App - Rendered");
     return (
       <React.Fragment>
         {/*   <NavBar totalCounters={this.state.counters.length} />*/}
