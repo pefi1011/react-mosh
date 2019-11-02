@@ -13,6 +13,34 @@ class App extends Component {
     ]
   };
 
+  constructor(props) {
+    super(props);
+    console.log("App - Constructor");
+
+    // we cannot call setState method in here
+    // Because the setState method can be only called when the component is mounted and placed into the DOM
+    // and the constructor is the first method being called in the mount phase
+    //this.setState({ test: 2 });
+    // The error is: Can't call setState on a component that is not yet mounted.
+    // This is a no-op, but it might indicate a bug in your application.
+    // Instead, assign to `this.state` directly or define a `state = {};` class property with the desired state in the App component.
+
+    // In here you set the state directly!
+    this.state.test = 2;
+
+    // THE COMMON USE CASE IS TO SET THE STATE
+    // BASED ON THE PROPS WHICH WE GET FROM THE OUTSIDE
+    //this.state = this.props.something;
+
+    // NOTE THAT YOU DO NOT HAVE ACCESS TO PROPS UNLESS THE CONSTRUCTOR METHOD HAS IT AS THE PARAM
+    // AND THE PROPS IS PASSED AS THE ARGUMENT TO THE SUPER()
+    // OTHERWISE THE PROPS IS UNDEFINED
+    console.log("props: ", props);
+    this.state.test2 = this.props.something;
+
+    // The constructor is called once and it is the right place to initialize the properties in this class, i.e. init state values
+  }
+
   handleIncrement = counter => {
     console.log("counter: ", counter);
 
