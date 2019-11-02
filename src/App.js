@@ -41,6 +41,14 @@ class App extends Component {
     // The constructor is called once and it is the right place to initialize the properties in this class, i.e. init state values
   }
 
+  componentDidMount() {
+    // This method is called after our component is rendered into the DOM
+    // It's the perfect place to make AJAX calls to get data from the server
+    // Ajax Call
+    // and then set state the state with that data
+    console.log("App - Mounted");
+  }
+
   handleIncrement = counter => {
     console.log("counter: ", counter);
 
