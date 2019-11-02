@@ -16,6 +16,27 @@ class Counter extends Component {
     this.setState({ value: this.state.value + 1 });
   };
 */
+
+  componentDidUpdate(prevProps, prevState) {
+    // This method is called after the method is updated
+    // which means that we have a new state or new props
+    // we can compare
+    // new state vs old state
+    // new props vs props
+    // and if there is a change, we can make a new AJAX call
+    // to the server to get the data
+    // if there are no changes, perhaps we do not want to make an additional AJAX call
+    console.log("prevProps: ", prevProps);
+    console.log("prevState: ", prevState);
+
+    if (prevProps.counter.value !== this.props.counter.value) {
+      // AJAX cal and get new data from the server
+      // OPTIMIZATION TECHNIQUE BECAUSE WE ARE ABLE TO
+      // DECIDE WHETHER  WE SHOULD AN AJAX CALL TO GET NEW DATA
+      // BASED ON THE CHANGES IN THE PROPS AND STATE OBJECTS
+    }
+  }
+
   render() {
     console.log("Counter - Rendered");
 
