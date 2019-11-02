@@ -17,6 +17,10 @@ class Counter extends Component {
   };
 */
 
+  componentDidMount() {
+    console.log("Counter - Mounted");
+  }
+
   componentDidUpdate(prevProps, prevState) {
     // This method is called after the method is updated
     // which means that we have a new state or new props

@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import Counter from "./counter";
 
 class Counters extends Component {
+  componentDidMount() {
+    // This method is called after our component is rendered into the DOM
+    // It's the perfect place to make AJAX calls to get data from the server
+    // Ajax Call
+    // and then set state the state with that data
+    console.log("Counters - Mounted");
+
+    // WHEN A COMPONENT IS MOUNTED, THAT MEANS THAT THE COMPONENT IS IN THE DOM
+  }
   render() {
     console.log("Counters - Rendered");
 
