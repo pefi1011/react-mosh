@@ -21,6 +21,13 @@ class Counter extends Component {
     console.log("Counter - Mounted");
   }
 
+  componentWillUnmount() {
+    // CALLED THE MOMENT JUST BEFORE A COMPONENT IS REMOVED FROM THE DOM
+    console.log("Counter - Unmount");
+
+    // THIS GIVES US AN OPPORTUNITY TO PERFORM CLEAN UPS
+  }
+
   componentDidUpdate(prevProps, prevState) {
     // This method is called after the method is updated
     // which means that we have a new state or new props
